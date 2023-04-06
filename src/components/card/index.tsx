@@ -12,7 +12,12 @@ interface ICard {
   onClick: (data: any) => Promise<any>;
 }
 
-const Card: React.FC<ICard> = ({ sections, onClick, label, initialValues }) => {
+export const Card: React.FC<ICard> = ({
+  sections,
+  onClick,
+  label,
+  initialValues,
+}) => {
   const [loading, setLoading] = useState(false);
   const [localState, setState] = useState(initialValues || {});
 
@@ -31,9 +36,9 @@ const Card: React.FC<ICard> = ({ sections, onClick, label, initialValues }) => {
   }, [localState, onClick]);
 
   return (
-    <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 m-8">
+    <form className="bg-white shadow-lg rounded px-8 pt-6 pb-8 m-8">
       {sections.map((section) => (
-        <div key={section.name}>
+        <div key={section.name} className="mb-3">
           <label
             htmlFor="first_name"
             className="block mb-2 text-sm font-medium text-gray-90 "
@@ -50,18 +55,14 @@ const Card: React.FC<ICard> = ({ sections, onClick, label, initialValues }) => {
           />
         </div>
       ))}
-      <div className="flex items-center justify-between">
-        <button
-          type="button"
-          onClick={onSubmit}
-          disabled={loading}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-        >
-          {label}
-        </button>
-      </div>
+      <button
+        type="button"
+        onClick={onSubmit}
+        disabled={loading}
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
+      >
+        {label}
+      </button>
     </form>
   );
 };
-
-export default Card;

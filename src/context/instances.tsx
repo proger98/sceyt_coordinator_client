@@ -18,7 +18,9 @@ interface IInstances {
 interface IInstanceContext {
   socket: Socket | null;
   instances: IInstances;
-  info: any;
+  clientsInfo: any;
+  channelsInfo: any;
+  messagesInfo: any;
 }
 
 export const InstanceContext = createContext<IInstanceContext>({
@@ -27,7 +29,9 @@ export const InstanceContext = createContext<IInstanceContext>({
     ids: [],
     length: 0,
   },
-  info: {},
+  clientsInfo: {},
+  channelsInfo: {},
+  messagesInfo: {},
 });
 
 export const InstanceProvider: React.FC<{ children: React.ReactNode }> = ({
@@ -38,7 +42,7 @@ export const InstanceProvider: React.FC<{ children: React.ReactNode }> = ({
     ids: [],
     length: 0,
   });
-  const [info, setInfo] = useState<IInfo>({});
+  const [clientsInfo, setInfo] = useState<IInfo>({});
 
   useEffect(() => {
     const _socket = io(SERVER_ENDPOINT);
@@ -57,11 +61,13 @@ export const InstanceProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const value = useMemo(
     () => ({
-      info,
       instances,
+      clientsInfo,
+      channelsInfo: {},
+      messagesInfo: {},
       socket: socket.current,
     }),
-    [instances, info]
+    [instances, clientsInfo]
   );
 
   return (

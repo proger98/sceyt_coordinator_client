@@ -1,13 +1,17 @@
-import React from 'react';
+import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
 
-import { InstanceProvider } from './context';
-import MainPage from './pages/main';
+import { InstanceProvider } from "./context";
+import AppRoutes from "./navigation/routes";
+import "./common.scss";
 
 function App() {
   return (
-  <InstanceProvider>
-    <MainPage />
-  </InstanceProvider>
+    <Router>
+      <InstanceProvider>
+        <AppRoutes />
+      </InstanceProvider>
+    </Router>
   );
 }
 

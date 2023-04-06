@@ -1,0 +1,33 @@
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+}
+
+$height: calc(100vh - 3.5625rem);
+
+.page-content {
+  overflow: hidden;
+  background: #f7f8f9;
+
+  & .data-wrap {
+    height: $height;
+
+    & .main-box {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      min-height: inherit;
+      margin: 0 -1.25rem;
+
+      & .info-side {
+        width: 15.3%;
+        height: $height;
+      }
+    }
+  }
+}

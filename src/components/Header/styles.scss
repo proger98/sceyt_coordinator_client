@@ -1,0 +1,23 @@
+header {
+  border-bottom: 1px solid #e5e9eb;
+  & .data-wrap {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 0.5rem 0.9375rem;
+    & .logo {
+      padding: 0 0.3125rem;
+
+      & a {
+        display: block;
+        max-width: 4.375rem;
+      }
+    }
+  }
+}
