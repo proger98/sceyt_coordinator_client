@@ -6,6 +6,10 @@ import { Card } from "../../components";
 const sections = {
   createClients: [
     {
+      name: "userPrefix",
+      label: "User prefix",
+    },
+    {
       name: "count",
       label: "Clients count",
     },
@@ -26,7 +30,10 @@ const sections = {
 
 export const MainPage: React.FC = () => {
   const createClients = useCallback((data: any) => {
-    return APICalls.createClients(data);
+    return APICalls.createClients({
+      ...data,
+      disconnectClient: !!data.disconnectClient,
+    });
   }, []);
 
   return (
@@ -39,6 +46,7 @@ export const MainPage: React.FC = () => {
           intervalCount: 10,
           intervalTime: 1000,
           disconnectClient: 0,
+          userPrefix: "test-user-",
         }}
         sections={sections.createClients}
       />

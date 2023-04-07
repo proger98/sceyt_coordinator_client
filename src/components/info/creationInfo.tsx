@@ -27,12 +27,12 @@ export const CreationInfo: React.FC<ICreationInfo> = ({ title, dataKey }) => {
             <span className="block text-sm font-medium text-red-500">
               Failed: {info[child].fail}
             </span>
-            {!!info[child]?.disconnected && (
+            {info[child]?.disconnected !== undefined && (
               <span className="block text-sm font-medium text-blue-500">
                 Disconnected: {info[child].disconnected}
               </span>
             )}
-            {!!info[child].state && (
+            {info[child].state !== undefined && (
               <span className="block text-sm font-medium text-blue-500">
                 State: {info[child].state}
               </span>
