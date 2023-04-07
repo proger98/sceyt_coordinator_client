@@ -17,7 +17,7 @@ export const CreationInfo: React.FC<ICreationInfo> = ({ title, dataKey }) => {
       <span className="text-sm font-medium text-gray-90">{title}:</span>
       <ul>
         {Object.keys(info).map((child) => (
-          <li>
+          <li key={child}>
             <span className="block text-sm font-medium text-gray-70">
               {child}
             </span>

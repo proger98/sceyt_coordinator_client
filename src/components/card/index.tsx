@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from "react";
+import { Input } from "../inputs";
 
 interface Section {
   name: string;
@@ -38,22 +39,14 @@ export const Card: React.FC<ICard> = ({
   return (
     <form className="bg-white shadow-lg rounded px-8 pt-6 pb-8 m-8">
       {sections.map((section) => (
-        <div key={section.name} className="mb-3">
-          <label
-            htmlFor="first_name"
-            className="block mb-2 text-sm font-medium text-gray-90 "
-          >
-            {section.label}
-          </label>
-          <input
-            required
-            type="text"
-            name={section.name}
-            onChange={onChange}
-            value={localState[section.name]}
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          />
-        </div>
+        <Input
+          key={section.name}
+          className="mb-3"
+          label={section.label}
+          name={section.name}
+          onChange={onChange}
+          value={localState[section.name]}
+        />
       ))}
       <button
         type="button"

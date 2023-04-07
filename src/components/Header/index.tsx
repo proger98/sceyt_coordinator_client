@@ -10,7 +10,7 @@ interface Props {
 export const AppHeader: React.FC<Props> = ({ headerRight }) => {
   return (
     <header>
-      <div className="container">
+      <div className="container-lg">
         <div className="data-wrap">
           <div className="logo">
             <Link to="/">

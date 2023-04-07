@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 
-import { AppHeader, Connections, CreationInfo } from "../";
+import { AppHeader, Connections, CreationInfo, UploadAppModal } from "../";
 
 import "./styles.scss";
 
@@ -10,8 +10,16 @@ interface Props {
 }
 
 export const AppLayout: React.FC<Props> = ({ headerRight, children }) => {
+  const [isVisible, setVisible] = useState(false);
+
+  // @ts-ignore
+  window.setVisible = useCallback((_visiblie: boolean) => {
+    setVisible(_visiblie);
+  }, []);
+
   return (
     <div className="app-layout">
+      {isVisible && <UploadAppModal />}
       <AppHeader headerRight={headerRight} />
       <div className="page-content">
         <div className="data-wrap">
@@ -19,10 +27,10 @@ export const AppLayout: React.FC<Props> = ({ headerRight, children }) => {
             <div className="info-side">
               <Connections />
               <CreationInfo title="Create clients" dataKey={"clientsInfo"} />
-              <CreationInfo title="Create channels" dataKey={"channelsInfo"} />
-              <CreationInfo title="Send messages" dataKey={"messagesInfo"} />
+              {/* <CreationInfo title="Create channels" dataKey={"channelsInfo"} />
+              <CreationInfo title="Send messages" dataKey={"messagesInfo"} /> */}
             </div>
-            <div className="container">{children}</div>
+            <div className="container-lg">{children}</div>
           </div>
         </div>
       </div>
