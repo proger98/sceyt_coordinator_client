@@ -2,14 +2,22 @@ import React from "react";
 
 interface IButton {
   label: string;
+  className?: string;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-export const PrimaryButton: React.FC<IButton> = ({ label, onClick }) => {
+export const PrimaryButton: React.FC<IButton> = ({
+  label,
+  onClick,
+  className,
+}) => {
   return (
     <button
       onClick={onClick}
-      className="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700"
+      className={
+        className ||
+        "text-white bg-blue-700 hover:bg-blue-800 focus:outline-none font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700"
+      }
     >
       {label}
     </button>
