@@ -9,11 +9,11 @@
 $height: calc(100vh - 3.5625rem);
 
 .page-content {
-  overflow: hidden;
+  // overflow: hidden;
   background: #f7f8f9;
 
   & .data-wrap {
-    height: $height;
+    // height: $height;
 
     & .main-box {
       display: -webkit-box;
@@ -22,10 +22,9 @@ $height: calc(100vh - 3.5625rem);
       -ms-flex-wrap: wrap;
       flex-wrap: wrap;
       min-height: inherit;
-      margin: 0 -1.25rem;
 
       & .info-side {
-        width: 15.3%;
+        width: 16%;
         height: $height;
       }
     }
